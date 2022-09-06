@@ -1,0 +1,15 @@
+Note that the tests for this were adapted from v1, since no additional functionality was added - this is a version with one key structural difference (the auxiliary array), but no additional features. Each test had to be adapted, because v2 runs mergesort in place instead of returning a new list.
+
+Notes from comparison to Algorithms (Java) textbook:
+-Writing this variant of merge sort in Python instead of Java reveals some of Java's strengths. Java's ++ post-increment operator makes the zipper merge far more succinct in that language, and Python's duck typing and consequent lack of truncation caused a bug until I realized I needed to cast the mid variable as an int.
+
+Notes from comparison to example at https://www.geeksforgeeks.org/python-program-for-merge-sort/:
+-This is yet another variant: this time, there's no auxiliary array, but this variant merges in place with temp lists instead of v1's solution of returning a new list.
+-Oh, // is a thing. I wasn't aware before. No need for int casting, then.
+-This example requires that "l" and "r" parameters are passed; I should prevent this with a wrapper function
+-The way this example runs a base case for mergeSort is elegant:
+    if l < r:
+        [run normally]
+    ...and that's it. Nothing happens if l>=r, which is what's required. Elegant as heck.
+
+Next version: use // instead of int casting, and write it with merge-in-place but no aux array. Basically, recreate the GeeksForGeeks example blind (and add a wrapper function that obviates the need for l and r parameters).

@@ -1,0 +1,13 @@
+The final version: an improved variant of v1, and maybe even the fastest, cleanest possible way to implement top-down merge sort in Python.
+
+Improvements vs. v1:
+-The // operator is used when calculating the pivot instead of casting the quotient as an int
+    -This seems to make little or no difference to execution time, but it's cleaner
+-Deleted the unnecessary comparisons in the zipper merge
+    -This is where v6's big speed improvement comes from.
+-Added back in those couple if checks for the final stage of the zipper merge, which I had previously decided were unnecessary. This is because the extend operations are expensive, even if they do nothing, and the if checks are cheap. Thus, the if checks, which are logically unnecessary, make the algorithm slightly faster.
+-Changed the second if statement from the above point to an elif, which avoids an unnecessary evaluation when the preceding if statement evaluated to true.
+
+Couldn't use v3's elegant base-case syntax, because when the function is implemented to return a new list instead of editing an old one in place, the merge_sort method must always return something.
+
+This runs MUCH faster than v1! A grand success.

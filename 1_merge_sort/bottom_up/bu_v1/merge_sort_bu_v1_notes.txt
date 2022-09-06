@@ -1,0 +1,13 @@
+This is my first try at writing a bottom-up merge sort algorithm, done without looking at any other implementation.
+
+Note: to avoid having to copy the items twice instead of once in each merge, I'll write the next version with TWO arrays which pour their contents back into each other until the sort is complete. I stuck to the simpler version with two copy operations for this one just to keep my first attempt simple.
+
+Notes from Algorithms (Java) textbook:
+-The upper bound on y should be len(arr)-x, not just len(arr), to avoid redundant work when the remainder has already been sorted
+-Rename x "sz" and y "lo" for clarity
+
+Also, I can think of two ways to make this algorithm faster:
+For v2: replace the auxiliary array by slicing a pair of sublists out of the array for every _merge call. This replaces the copy-and-insert operation which loaded v1's auxiliary array. Instead, it uses a slice operation, which is faster.
+For v3: in addition to v2's tweak, REPLACE - as in reassign - the entire array upon every iteration of the outer loop. This way, I can avoid expensive insertion operations and simply append instead. The tradeoff here is the extra storage needed to store the old and new versions of the array at once.
+
+My hypothesis is that v2 should be faster than v1, and v3 should be fastest of all. Let's see if I am correct.

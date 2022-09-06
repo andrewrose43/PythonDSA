@@ -1,0 +1,22 @@
+v5 is an improved version of v4. After performance_test.py revealed that v1 was fastest, I compared v1 to v4 to see what might make the difference.
+
+One thing stood out: v1's zipper merge logic avoided some unnecessary comparisons by using one while loop for merging until one of the two sublists had been fully processed, then using extend() to finish with the tail end of whichever sublist had not yet been processed. This trick is the difference between v4 and v5.
+
+The trick didn't work. v5 performs no better than v4 - when performance_test.py is run, sometimes v5 is slightly faster than v4 and sometimes it is slightly slower. It seems to be roughly identical in terms of overall performance, with the randomly-generated input causing the slight fluctuations. (Statistical analysis of the two variants' performance for more statistically rigorous insight would take more time than I'm willing to spend on this.)
+
+So why was v1 fastest? It's not because it copies its items any less; each merge_sort(nums) call includes the slicing and copying of nums into two halves, which seemingly offsets the _merge() method's lack of copying.
+
+The problem with v2, v4, and v5 was that their means of copying were slower.
+v2: for k in range(lo, hi+1):
+        aux[k] = arr[k]
+v4/v5: aux[lo:hi+1] = arr[lo:hi+1]
+
+Both of those involve insertion. In contrast, v1 did this:
+left = merge_sort(nums[:pivot])
+right = merge_sort(nums[pivot:])
+
+Tada! No insertion when creating temporary arrays. The plain slicing is faster.
+
+So that's why v1 was so much faster. v1's zipper-merge logical trick was only a minor contributor to its efficiency. As well, that logic trick became inelegant when adapted to work with v5's auxiliary-array-based implementation.
+
+v6 will be the final version: a slightly-improved edit of v1.

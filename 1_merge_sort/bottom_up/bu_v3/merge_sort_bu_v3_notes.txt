@@ -1,0 +1,11 @@
+Success! v3 is indeed faster than v2, which in turn is faster than v1.
+
+Bottom-up v3 seems to be roughly as fast as top-down v6; depending on the random input they're sorting, it's always one of the two that does the job fastest, with top-down v1 trailing in a distant third place.
+
+Can I make bottom-up v3 even faster? Time to look at other people's implementations for fresh ideas.
+
+A quick Google search turned up this example: https://www.techiedelight.com/iterative-merge-sort-algorithm-bottom-up/
+This example is a bit messily-coded, but it contains one surprising insight that could make my bottom-up AND top-down implementations faster:
+When merge-sorting with an auxiliary array, when the zipper merge completes the left side first, there is never a need to copy the remainder of the right side back to the main array. This is because, logically, the remainder of the right side must already be in the correct order, owing to previous iterations of the merge algorithm.
+
+I will now blindly write an auxiliary-array-based implementation of bottom-up merge sort, then integrate any forgotten optimizations from my previous examples to make it as fast as possible. I will then repeat that process for top-down merge sort, resulting in an unexpected 7th version of top-down merge sort. We shall see whether any implementation which uses this trick outpaces 

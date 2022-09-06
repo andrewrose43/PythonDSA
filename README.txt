@@ -1,0 +1,1 @@
+This is a series of DSA exercises in which I shall code major data structures & algorithms in Python, then iteratively try out different variations on the DSAs and measure their execution speed to obtain the best possible Python implementations of these DSAs.

@@ -1,0 +1,9 @@
+Notes from comparison to example at https://www.geeksforgeeks.org/python-program-for-merge-sort/:
+-I've wrapped the algorithm in an easily-callable function that doesn't require "lo" and "hi" inputs, unlike the example.
+-GfG's copying of data to the temporary arrays is slicker than mine. I'll integrate that into the final product.
+
+For v4:
+    -write next version with // instead of int casting, and with merge-in-place but no aux array. Basically, recreate the GeeksForGeeks example blind (and add a wrapper function that obviates the need for l and r parameters).
+    -fill temporary lists with list comprehension for succinctness
+    -only call len() once for left and once for right when zipper-merging; put it in a temp var
+    -integrate GfG's slicker copying syntax for the temporary lists, if I do use temporary lists

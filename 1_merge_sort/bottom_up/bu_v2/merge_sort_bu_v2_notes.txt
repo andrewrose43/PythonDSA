@@ -1,0 +1,1 @@
+v2 is indeed faster than v1. Success. Let's see whether the further improvement described in merge_sort_bu_v1_notes.txt will make v3 even faster, as predicted.

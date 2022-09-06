@@ -1,0 +1,1 @@
+This version was created to test the impact of the zipper-merge trick noted in the comment in the last line of code. It yielded the best performance of any top-down implementation which uses an auxiliary array, but top-down version 6 and bottom-up version 3 are still the champs. Auxiliary arrays are unavoidably slow, it turns out, due to the expense of insert operations.

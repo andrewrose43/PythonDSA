@@ -1,0 +1,14 @@
+Notes from comparison to LeetCode example at https://leetcode.com/explore/learn/card/recursion-ii/470/divide-and-conquer/2868/:
+-there's no IndexError when extend() is used to extend from an array which is being accessed out of bounds. This is because IndexError only occurs when you try to access a nonexistent element, NOT when you try to access a range of nonexistent elements.
+    -For v2: Don't bother taking precautions against IndexErrors when extending/appending.
+-otherwise, my solution here turned out almost exactly the same.
+
+Notes from comparison to Algorithms (Java) textbook:
+-This example uses a fixed-size auxiliary array. This saves computation time at the expense of memory. I'll try this for v2.
+-The merge step:
+    -receives unsorted section, lo, mid, hi
+    -sets two cursors, i and j, to be equal to lo, mid+1
+    -copies the section to the aux array
+    -uses i and j to select zipper-merge candidates in a loop that runs hi-lo times
+    That doesn't meaningfully change in Python. If our objective is to save computation time at the expense of memory, we don't want to create sublists. We want to keep operating off the auxiliary list and the main list, and we want to keep passing lo, mid, hi down to merge.
+-Meanwhile, the division step starts with lo and hi, finds mid, calls sort on the two halves, and then calls merge on the space between lo and hi, with mid acting to separate them.

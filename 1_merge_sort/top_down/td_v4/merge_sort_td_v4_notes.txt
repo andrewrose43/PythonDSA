@@ -1,0 +1,32 @@
+This version of merge sort was based on merge_sort_v2 (with several improvements). It was intended to be the final version, but it ended up performing worse than v1, which proved fastest.
+
+Here's why, in terms of the overall architecture of each implementation, I had mistakenly thought that v4 would be the fastest of the four versions so far:
+
+-----
+
+(note: the next 3 paragraphs contain faulty reasoning; I include it for posterity and explain later why my reasoning was flawed)
+
+v1 did not use an auxiliary array, instead creating a new list in every _merge call. This creates a little bit of computation overhead. And, despite what it seems at a glance, this doesn't save any storage space, since the result of the topmost merge_v1 operation will consume as much space as an auxiliary array would.
+
+v2 is a standard auxiliary-array-based implementation of merge sort, which improves on v1 in both of the ways described above.
+
+v3 is like v2, except it uses 2 smaller auxiliary arrays in its _merge method instead of one large auxiliary array. Since the topmost _merge operation's two auxiliary arrays together require as much space as the auxiliary array from v2, this is not any better space-wise, and the management of all those lists takes up time.
+
+-----
+
+Since I believed v2 would be the best-performing version, I wrote v4 to be an improved version of it.
+
+Improvements vs. v2:
+-List-comprehension-based single-line auxiliary array filling.
+-v3's elegant base-case syntax.
+-Improved naming conventions.
+
+Then I wrote performance_test.py to test my reasoning, and it turned out that v1 was fastest. In order of speed, the versions could be ranked v1, v4, v2, v3. I had succeeded in making v4 an improvement upon v2, but v1 was still the best.
+
+My ideas were incorrect because:
+    1) The time required to create a list is negligible.
+    2) v2 was slower than v1 because:
+        a) Upon every recursive _merge() call, v2 would copy each item twice: once to the auxiliary list and once back to the main list. v3 and v4 also had this problem.
+        b) v1 used fewer comparisons to do its zipper merge. v5 would be the first version to attempt to integrate this trick.
+
+I then wrote v5 to try to improve v4 past the speed of v1. My efforts improved upon v4, but v5 was still slower than v1. See merge_sort_v5_notes.txt for more info.

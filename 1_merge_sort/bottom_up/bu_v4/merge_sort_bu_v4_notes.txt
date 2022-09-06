@@ -1,0 +1,3 @@
+My final version of bottom-up merge sort, which implements the efficient zipper-merge trick found at https://www.techiedelight.com/iterative-merge-sort-algorithm-bottom-up/ in which the remainder of the right side is not copied back to the original array when the left side finishes copying first.
+
+This version proved slower than bottom-up v3 and top-down v6 but faster than all the rest, putting it in third place overall. I see no way to improve it further, so I'll now code the top-down implementation which uses the same logical trick.
