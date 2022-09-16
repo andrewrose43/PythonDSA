@@ -1,0 +1,9 @@
+This first version was written by reading LeetCode's guide to quicksort at https://leetcode.com/explore/learn/card/recursion-ii/470/divide-and-conquer/2870/ and then closing the window and blindly attempting to recreate it. To force myself to really learn it and not just regurgitate the Python implementation on that page, I read the Java implementation on the page instead.
+
+
+IMPROVEMENTS FOR V2 (based upon a look at the LeetCode example)
+-Better, more Pythonic syntax for swaps:
+    lst[a], lst[b] = lst[b], lst[a]
+-Try using a for loop with range() like in the LeetCode example.
+
+Next: I shall write v2 blind (except for the above couple notes on tweaks for this version).

@@ -1,0 +1,9 @@
+I managed to blindly recreate the LeetCode example pretty much exactly. Let's now create a performance test script to compare the two versions (which will be largely copied from my merge sorts' performance_test.py).
+
+My next steps are:
+    -create performance test script
+    -try out the remaining two combinations while practicing quicksort:
+        -blindly rewrite the algorithm with Pythonic swapping and while-loop-based implementation
+        -blindly rewrite the algorithm with standard swapping and for-in-range-based implementation
+
+Later, I may also implement an iterative version if I'm feeling adventurous.

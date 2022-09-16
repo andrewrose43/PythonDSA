@@ -1,0 +1,1 @@
+This is a variant on quicksort with Pythonic swapping and a while-loop-based _partition() method. Wrote this blindly to solidify my understanding of quicksort and compare performance of the four variants.

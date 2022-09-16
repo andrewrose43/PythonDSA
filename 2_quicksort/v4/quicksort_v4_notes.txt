@@ -1,0 +1,9 @@
+This variant uses standard (non-Pythonic, temporary-variable-based) swap syntax and a Pythonic for-in-range loop.
+
+After running the performance test, it became clear that time.time() is not accurate enough for comparing the performance of different implementations of algorithms. I must rewrite performance_test.py and also its counterpart in my merge sort folder, because that also used time.time(). Some quick research reveals that timeit is a better choice, so I'll adapt my code to use that instead.
+
+After setting up timeit, it turns out that v4 and v2 are fastest (with nearly indistinguishable runtimes from each other), while v3 and v1 are slower (also with nearly indistinguishable runtimes from each other).
+This suggests the following lessons about Python programming:
+-for-in-range() loops are faster than while loops
+-the standard and Pythonic swap syntaxes are roughly equally fast, so use the Pythonic syntax for cleanliness's sake
+Both of the above points were confirmed by some research - which also informed me the existence of the "dis" machine code viewer tool, which I'll be sure to use in the future to answer questions like these.
